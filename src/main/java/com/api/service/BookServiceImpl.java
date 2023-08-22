@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.api.dto.BookAuthorDTO;
 import com.api.entity.Book;
 import com.api.repository.BookRepository;
 
@@ -27,4 +28,9 @@ public class BookServiceImpl implements BookService {
     public Book saveBook(Book book) {
         return bookRepository.save(book);
     }
+    @Override
+    public List<BookAuthorDTO> findBookNamesAndAuthorNames(){
+        return bookRepository.findBookNamesAndAuthorNames();
+    }
+
 }

@@ -1,21 +1,24 @@
 package com.api.entity;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+import jakarta.persistence.*;
+import com.api.entity.Author;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
-import lombok.Setter;
+import lombok.Setter;   
 
-
+@Getter
+@Setter
 @Entity
+@Table(name = "books")
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-    private String author;
-    
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    @JsonIgnore
+    private Author author; 
 
-    
 }
